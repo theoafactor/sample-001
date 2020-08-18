@@ -1,0 +1,3 @@
+#Prevents access to the directories within the root directory
+#Without this user will be able to access directories like app, functions, config , etc 
+Options -Indexes 
