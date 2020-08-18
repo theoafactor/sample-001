@@ -1,6 +1,7 @@
 <?php 
-require_once("bootstrap/App.php");
+require 'vendor/autoload.php';
+
 
 //bootstraps the application ..
-
-App::start();
+//starts the application 
+start_app();

@@ -1,8 +1,12 @@
 <?php 
-require_once "./Classes/User.php";
+namespace App;
+
 class App{
 
+	private static $app_instance = null;
+
 	private function __construct(){
+		
 		echo "Runs the application";
 
 	}
@@ -16,10 +20,16 @@ class App{
 	 */
 	public static function start(){
 
-		echo "Starts the application";
+		//checks if this application instance has been created already.. 
+		if(!self::$app_instance){
 
-		$user = new User();
-		$user->checkUserExists();
+			self::$app_instance = new App;
+
+		}
+
+		return self::$app_instance;
+		
+
 	}
 
 
