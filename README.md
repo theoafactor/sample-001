@@ -10,5 +10,5 @@ The usage of this framework without the explicit permission of the author is not
 
 
 ## Author
-Olu Adeyemo [email](theoafactor@gmail.com)
+Olu Adeyemo -> theoafactor@gmail.com
 
