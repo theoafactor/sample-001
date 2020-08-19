@@ -19,5 +19,8 @@ use App\App;
  * @return [type] [description]
  */
 function start_app(){
-	App::start();//Call the start() method to start the bootstrapping process
+	$app = App::start();//Call the start() method to start the bootstrapping process
+
+	//call the appropriate 
+	$app->callController();
 }

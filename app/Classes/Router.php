@@ -12,8 +12,6 @@ namespace App\Classes;
 class Router{
 
 	public $path_box = null;
-	protected $controller = 'home';
-	protected $method = "index";
 
 	public function __construct(){
 		//spins off the router
@@ -35,13 +33,10 @@ class Router{
 		//index 0 -> Controller 
 		//index 1 -> Method
 		//index 2 -> Params
+		$paths_array = [];
 		if($this->path_box != null){
 			$this->path_box = filter_var(rtrim($this->path_box, "/"), FILTER_SANITIZE_URL);
 			$paths_array = explode("/", $this->path_box);
-		}else{
-			//set the default controller and the default method
-			$paths_array[] = $this->controller;
-			$paths_array[] = $this->method;
 		}
 
 		return $paths_array;

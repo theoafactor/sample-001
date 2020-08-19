@@ -3,23 +3,20 @@ namespace App;
 
 use App\Classes\Router;
 
-
 class App{
 
 	private static $app_instance = null;
+	public $resolved_routes = null;
+	public $page_controller = 'home'; //set the default page controller
+	public $params = []; //possible parameters, currently empty
+
+
 
 	private function __construct(){
 		//runs the application .. 
 		
 		//calls the router..
-		$resolved_routes = self::router();
-
-		//call the appropriate controller??
-		$home = $resolved_routes[0];
-
-		echo "This is the $home page";
-
-		
+		$this->resolved_routes = self::router();		
 
 	}
 
@@ -55,6 +52,52 @@ class App{
 		$router = new Router();
 		return $router->parseUrl();
 
+
+	}
+
+	/**
+	 * Calls the relevant controller to load the correct files..
+	 * @return [type] [description]
+	 */
+	public function callController(){
+
+		if(empty($this->resolved_routes)){
+
+			$this->resolved_routes[0] = $this->page_controller;
+		
+		}
+		
+		if(file_exists("./app/Controllers/".ucfirst($this->resolved_routes[0]).".php")){
+			
+			require_once("./app/Controllers/".ucfirst($this->resolved_routes[0].".php"));
+
+			$this->page_controller = ucfirst($this->resolved_routes[0]);
+			unset($this->resolved_routes[0]);
+			//instantiate the controller ..
+			
+			$this->page_controller = new $this->page_controller();
+
+			if(isset($this->resolved_routes[1])){
+				//bring in the method..
+				if(method_exists($this->page_controller, $this->resolved_routes[1])){
+					$this->page_method = $this->resolved_routes[1];
+					unset($this->resolved_routes[1]);
+				}else{
+					$this->page_method = $this->page_controller->page_method; //call the default method
+				}
+			}else{
+				$this->page_method = $this->page_controller->page_method; //call the default method
+			}
+
+			//echo "This is the method: ".$this->page_controller->$this->page_method;
+
+			$this->params[] = $this->resolved_routes ? array_values($this->resolved_routes) : [];
+
+			call_user_func_array([$this->page_controller, $this->page_method], $this->params);
+
+		}else{
+			echo "Error 404";
+		}
 
 	}
 
