@@ -15,9 +15,9 @@ class Router{
 
 	public function __construct(){
 		//spins off the router
-		if(isset($_GET['url'])){
+		if(isset($_GET[trim('url')])){
 			//resolve .. 
-			$path_box = $_GET['url'];
+			$path_box = $_GET[trim('url')];
 
 			//the $path_box should contain the controller and the method..
 			$this->path_box = $path_box;
