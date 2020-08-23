@@ -7,7 +7,7 @@ class App{
 
 	private static $app_instance = null;
 	public $resolved_routes = null;
-	public $page_controller = 'home'; //set the default page controller
+	public $page_controller = 'home_controller'; //set the default page controller
 	public $params = []; //possible parameters, currently empty
 
 
@@ -91,7 +91,7 @@ class App{
 
 			//echo "This is the method: ".$this->page_controller->$this->page_method;
 
-			$this->params[] = $this->resolved_routes ? array_values($this->resolved_routes) : [];
+			$this->params[] = $this->resolved_routes ? array_values($this->resolved_routes) : null;
 
 			call_user_func_array([$this->page_controller, $this->page_method], $this->params);
 

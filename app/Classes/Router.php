@@ -21,6 +21,7 @@ class Router{
 
 			//the $path_box should contain the controller and the method..
 			$this->path_box = $path_box;
+			//echo $path_box;
 		}
 
 	}
@@ -36,7 +37,9 @@ class Router{
 		$paths_array = [];
 		if($this->path_box != null){
 			$this->path_box = filter_var(rtrim($this->path_box, "/"), FILTER_SANITIZE_URL);
+			//echo $this->path_box;
 			$paths_array = explode("/", $this->path_box);
+			//print_r($paths_array);
 		}
 
 		return $paths_array;

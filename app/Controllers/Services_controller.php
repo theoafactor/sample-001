@@ -1,7 +1,7 @@
 <?php
 use App\Classes\Controller;
 
-class Services extends Controller{
+class Services_controller extends Controller{
 
 	public function index($params){
 		echo "This is the Services page";
