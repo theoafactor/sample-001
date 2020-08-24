@@ -11,7 +11,7 @@
     	"psr-4":{
     		"App\\" : "app"
     	},
-    	"files": ["functions/main_functions.php"]
+    	"files": ["functions/main_functions.php", "functions/view_functions.php"]
 
     }
 }
