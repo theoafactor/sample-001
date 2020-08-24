@@ -1,7 +1,7 @@
 <?php 
 use App\Classes\Controller;
 
-class Contact_controller extends Controller{
+class Contact extends Controller{
 
 	
 

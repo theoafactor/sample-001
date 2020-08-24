@@ -7,7 +7,7 @@ class App{
 
 	private static $app_instance = null;
 	public $resolved_routes = null;
-	public $page_controller = 'home_controller'; //set the default page controller
+	public $page_controller = 'home'; //set the default page controller
 	public $params = []; //possible parameters, currently empty
 
 
@@ -67,9 +67,9 @@ class App{
 		
 		}
 		
-		if(file_exists("./app/Controllers/".ucfirst($this->resolved_routes[0]).".php")){
+		if(file_exists("./app/Controllers/".ucfirst($this->resolved_routes[0])."Controller.php")){
 			
-			require_once("./app/Controllers/".ucfirst($this->resolved_routes[0].".php"));
+			require_once("./app/Controllers/".ucfirst($this->resolved_routes[0]."Controller.php"));
 
 			$this->page_controller = ucfirst($this->resolved_routes[0]);
 			unset($this->resolved_routes[0]);

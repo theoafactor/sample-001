@@ -2,7 +2,7 @@
 use App\Classes\Controller;
 
 
-class Home_controller extends Controller{
+class Home extends Controller{
 
 
 
