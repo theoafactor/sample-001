@@ -13,16 +13,15 @@ class Home extends Controller{
 	 */
 	public function index($params){
 
-		//print_r($params);
 
-		return view("you.me");
+		return view("checkmeout", $params);//render the checkmeout view..
 		
 	}
 
 	public function about($params){
 		//print_r($params);
 
-		echo "This is the Home | About";
+		return view("about-us");
 		
 	}
 

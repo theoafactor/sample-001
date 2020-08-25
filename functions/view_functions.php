@@ -1,4 +1,5 @@
 <?php 
+use App\Classes\Theme;
 /**
  * Handles the processing involving the views 
  * The templating system uses Blade Templating Engine ..
@@ -15,11 +16,11 @@
  * @param  [array] $param [array of parameters passed from the controller]
  * @return [type]        [description]
  */
-function view($view, $param = null){
+function view($view, $param = []){
 
 	//look for the $views ..
 	//
-	
+	Theme::renderView($view, $param);
 
 
 }
