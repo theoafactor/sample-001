@@ -1,7 +1,7 @@
 <?php
 use App\Classes\Controller;
 
-class Products extends Controller{
+class ProductsController extends Controller{
 
 	public function index($params){
 		echo "This is the Products page";
